@@ -1,0 +1,6 @@
+sample	cyanotype	replicate	tissue
+acli-1-Flw-Seq	acli	1	Flower
+AcLi-2-Root-Seq	AcLi	2	Root
+AcLi-1-Flw-Seq	AcLi	1	Flower
+AcLi-2-Flw-Seq	AcLi	2	Flower
+acli-2-Flw-Seq	acli	2	Flower
