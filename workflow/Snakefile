@@ -1,0 +1,15 @@
+import glob
+import pandas as pd
+from snakemake.utils import min_version
+
+min_version("7.32.3")
+
+configfile: "../config/hpcnode.yaml"
+
+SAMPLES = pd.read_table(config["sample_sheet"], sep="\t")["sample"].tolist()
+
+LOG_DIR = f"{config['log_prefix']}"
+STAR_DIR = f"{config['results_prefix']}/star"
+
+include: "rules/deg_analysis.smk"
+
