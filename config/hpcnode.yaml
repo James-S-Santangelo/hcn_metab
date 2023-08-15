@@ -2,6 +2,7 @@
 sample_sheet: ../resources/hcn_metab_sample_sheet.txt
 ref: /research/references/trifolium/repens/UTM_Trep_v1.0/UTM_Trep_v1.0_haploid_reference_softMasked.fasta
 gff: /research/references/trifolium/repens/UTM_Trep_v1.0/UTM_Trep_v1.0_functional_withDiamondProducts_final_sorted.gff3
+raw_reads: /research/projects/trifolium/hcn_metab/raw_data
 
 # Output
 results_prefix: /research/projects/trifolium/hcn_metab/results

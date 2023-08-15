@@ -4,8 +4,7 @@
 
 rule star_genome_build:
     input:
-        ref = config["ref"],
-        gff = config["gff"]
+        ref = config["ref"]
     output:
         directory(f"{STAR_DIR}/star_genome_build")
     log: f"{LOG_DIR}/star/star_genome_build.log"
@@ -17,7 +16,5 @@ rule star_genome_build:
         STAR --runMode genomeGenerate \
             --genomeDir {output} \
             --genomeFastaFiles {input.ref} \
-            --runThreadN {threads} \
-            --sjdbGTFfile {input.gff} \
-            --sjdbGTFtagExonParentTranscript Parent &> {log}
+            --runThreadN {threads} &> {log}
         """
