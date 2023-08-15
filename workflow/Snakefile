@@ -1,3 +1,4 @@
+import re
 import glob
 import pandas as pd
 from snakemake.utils import min_version
@@ -10,12 +11,10 @@ SAMPLES = pd.read_table(config["sample_sheet"], sep="\t")["sample"].tolist()
 
 LOG_DIR = f"{config['log_prefix']}"
 STAR_DIR = f"{config['results_prefix']}/star"
+DEG_DIR = f"{config['results_prefix']}/deg_analysis"
 
-include: "rules/common.smk"
 include: "rules/deg_analysis.smk"
 
 rule all:
     input:
         expand(rules.star_align_reads.output, sample=SAMPLES)
-
-
