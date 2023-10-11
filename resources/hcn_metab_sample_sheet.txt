@@ -4,3 +4,10 @@ AcLi-2-Root-Seq	AcLi	2	Root
 AcLi-1-Flw-Seq	AcLi	1	Flower
 AcLi-2-Flw-Seq	AcLi	2	Flower
 acli-2-Flw-Seq	acli	2	Flower
+acli-1-Root-Seq	acli	1	Root
+acli-2-Root-Seq	acli	2	Root
+AcLi-1-Leaf-Seq	AcLi	1	Leaf
+AcLi-2-Leaf-Seq	AcLi	2	Leaf
+acli-1-Leaf-Seq	acli	1	Leaf
+acli-2-Leaf-Seq	acli	2	Leaf
+AcLi-1-Root-Seq	AcLi	1	Root
