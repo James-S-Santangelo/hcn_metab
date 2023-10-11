@@ -4,3 +4,9 @@ channels:
 dependencies:
   - star=2.7.10
   - subread=2.0.6
+  - r-base
+  - python=3.9
+  - jupyter=1.0.0
+  - r-irkernel=1.3.2
+  - r-tidyverse
+  - bioconductor-deseq2

@@ -91,3 +91,12 @@ rule feature_counts:
             {input.bams} 2> {log}
         """
         
+rule deg_analisis:
+    input:
+        counts = rules.feature_counts.output,
+        gff = config["gff"]
+    output:
+        "test.txt"
+    conda: "../envs/deg_analysis.yaml"
+    notebook:
+        "../notebooks/deg_analysis.r.ipynb"
