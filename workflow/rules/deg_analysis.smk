@@ -88,6 +88,7 @@ rule feature_counts:
             -F SAF \
             -o {output} \
             -p \
+            -Q 30 \
             {input.bams} 2> {log}
         """
         
