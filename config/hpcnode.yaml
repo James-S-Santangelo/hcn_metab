@@ -1,8 +1,10 @@
 # Input files
 sample_sheet: ../resources/hcn_metab_sample_sheet.txt
 ref: /research/references/trifolium/repens/UTM_Trep_v1.0/UTM_Trep_v1.0_haploid_reference_softMasked.fasta
+olsen: /research/references/trifolium/repens/GCA_032173615.1_drTriRepe4_hap1_1.5/GCA_032173615.1/GCA_032173615.1_drTriRepe4_hap1_1.5_genomic.fna
 gff: /research/references/trifolium/repens/UTM_Trep_v1.0/UTM_Trep_v1.0_functional_withDiamondProducts_final_sorted.gff3
 raw_reads: /research/projects/trifolium/hcn_metab/raw_data
+hcn_genes: ../resources/T-repens_HCN_genes.fasta
 
 # Output
 results_prefix: /research/projects/trifolium/hcn_metab/results

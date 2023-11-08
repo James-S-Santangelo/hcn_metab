@@ -25,7 +25,8 @@ rule star_align_reads:
         R1 = lambda w: glob.glob(f"{config['raw_reads']}/*.{w.sample}_R1.fastq.gz"),
         R2 = lambda w: glob.glob(f"{config['raw_reads']}/*.{w.sample}_R2.fastq.gz") 
     output:
-        f"{STAR_DIR}/alignments/{{sample}}/{{sample}}_Aligned.sortedByCoord.out.bam"
+        bam = f"{STAR_DIR}/alignments/{{sample}}/{{sample}}_Aligned.sortedByCoord.out.bam",
+        bai = f"{STAR_DIR}/alignments/{{sample}}/{{sample}}_Aligned.sortedByCoord.out.bam.bai"
     log: f"{LOG_DIR}/star/{{sample}}_star_align.log"
     conda: "../envs/deg_analysis.yaml"
     threads: 6
@@ -33,7 +34,7 @@ rule star_align_reads:
         out = f"{STAR_DIR}/alignments/{{sample}}/{{sample}}_"
     shell:
         """
-        STAR --readFilesIn {input.R1} {input.R2} \
+        ( STAR --readFilesIn {input.R1} {input.R2} \
             --outSAMtype BAM SortedByCoordinate \
             --genomeDir {input.star_build} \
             --runThreadN {threads} \
@@ -42,7 +43,8 @@ rule star_align_reads:
             --outFilterMatchNminOverLread 0.4 \
             --outFilterScoreMinOverLread 0.4 \
             --outReadsUnmapped Fastx \
-            --outFileNamePrefix {params.out} &> {log} 
+            --outFileNamePrefix {params.out} &&
+        samtools index {output.bam} ) &> {log} 
         """
 
 #####################
@@ -73,7 +75,7 @@ rule generate_saf_file:
 
 rule feature_counts:
     input:
-        bams = expand(rules.star_align_reads.output, sample=SAMPLES),
+        bams = expand(rules.star_align_reads.output.bam, sample=SAMPLES),
         saf = rules.generate_saf_file.output
     output:
         f"{DEG_DIR}/feature_counts/feature_counts.txt"

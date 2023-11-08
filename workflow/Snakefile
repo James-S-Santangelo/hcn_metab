@@ -8,12 +8,16 @@ min_version("7.32.3")
 configfile: "../config/hpcnode.yaml"
 
 SAMPLES = pd.read_table(config["sample_sheet"], sep="\t")["sample"].tolist()
+LEAF_SAMPLES = [x for x in SAMPLES if "Leaf" in x]
 
 LOG_DIR = f"{config['log_prefix']}"
 STAR_DIR = f"{config['results_prefix']}/star"
+MINIMAP_DIR = f"{config['results_prefix']}/minimap"
+READ_ANALYSIS_DIR = f"{config['results_prefix']}/read_analysis"
 DEG_DIR = f"{config['results_prefix']}/deg_analysis"
 
 include: "rules/deg_analysis.smk"
+include: "rules/finding_genes.smk"
 
 rule all:
     input:
