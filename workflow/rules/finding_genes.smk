@@ -66,7 +66,7 @@ rule subset_bam:
         bai = f"{READ_ANALYSIS_DIR}/{{sample}}_{{gene}}.bam.bai"
     conda: "../envs/finding_genes.yaml"
     params:
-        region = lambda w: "Chr02_Occ:8992136-9228318" if w.gene == "ac" else "Chr04_Pall:28511241-28515143"
+        region = lambda w: "Chr02_Occ:9002690-9004325" if w.gene == "ugt" else ("Chr02_Occ:9107540-9109570" if w.gene == "cyp73" else ("Chr02_Occ:9222778-9224505" if w.gene == "cyp79" else "Chr04_Pall:28511241-28515143"))
     shell:
         """
         samtools view -hb {input} {params.region} > {output.bam} && samtools index {output.bam}
@@ -85,7 +85,7 @@ rule finding_genes_done:
     input:
         expand(rules.star_align_reads_toOlsen.output, sample=LEAF_SAMPLES),
         expand(rules.minimap_align_hcn_genes.output, ref=["olsen", "utm"]),
-        expand(rules.get_num_alignments_and_mq.output, sample=SAMPLES, gene=["ac", "li"])
+        expand(rules.get_num_alignments_and_mq.output, sample=SAMPLES, gene=["ugt", "cyp79", "cyp73", "li"])
     output:
         f"{MINIMAP_DIR}/minimap.done"
     shell:

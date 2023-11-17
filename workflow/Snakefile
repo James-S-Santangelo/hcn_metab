@@ -15,6 +15,7 @@ STAR_DIR = f"{config['results_prefix']}/star"
 MINIMAP_DIR = f"{config['results_prefix']}/minimap"
 READ_ANALYSIS_DIR = f"{config['results_prefix']}/read_analysis"
 DEG_DIR = f"{config['results_prefix']}/deg_analysis"
+FIGURES_DIR = f"{config['results_prefix']}/figures"
 
 include: "rules/deg_analysis.smk"
 include: "rules/finding_genes.smk"

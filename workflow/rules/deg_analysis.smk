@@ -90,16 +90,19 @@ rule feature_counts:
             -F SAF \
             -o {output} \
             -p \
-            -Q 30 \
+            -Q 255 \
             {input.bams} 2> {log}
         """
         
-rule deg_analisis:
+rule deg_analysis:
     input:
         counts = rules.feature_counts.output,
         gff = config["gff"]
     output:
-        "test.txt"
+        li_plot = f"{FIGURES_DIR}/li_counts.pdf",
+        cyp79_plot = f"{FIGURES_DIR}/CYP79D15_counts.pdf",
+        cyp73_plot = f"{FIGURES_DIR}/CYP736A187_counts.pdf",
+        ugt_plot = f"{FIGURES_DIR}/UGT85K17_counts.pdf"
     conda: "../envs/deg_analysis.yaml"
     notebook:
         "../notebooks/deg_analysis.r.ipynb"
