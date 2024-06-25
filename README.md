@@ -1,9 +1,11 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12525188.svg)](https://doi.org/10.5281/zenodo.12525188)
+
 ## Analysis of RNA-seq data exploring tissue-specific expression of HCN in white clover
 
 ### Description of repository
 
 This repository contains code necessary to reproduce the RNA-seq analyses from [this paper]().
-Raw read files have been deposited on NCBI (BioProject [PRJNA1124556](https://www.ncbi.nlm.nih.gov/sra/PRJNA1124556). The pipeline uses `Conda`, `Snakemake`, 
+Raw read files have been deposited on NCBI (BioProject [PRJNA1124556](https://www.ncbi.nlm.nih.gov/sra/PRJNA1124556)). The pipeline uses `Conda`, `Snakemake`, 
 and `Singularity` for workflow management and reproducibility. All Snakefiles and directories are well-documented, 
 but here is a brief overview of the pipeline and directories in this repository:
 
