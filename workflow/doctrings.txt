@@ -1,0 +1,9 @@
+all
+deg_analysis
+    Perform differential expression analysis of normalized counts using DESeq2
+feature_counts
+    Count number of reads overlapping genes
+generate_saf_file
+    Conver GFF3 file to SAF file for feature counting
+star_genome_build
+    Build index files for Reference Genome

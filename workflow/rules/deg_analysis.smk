@@ -3,6 +3,9 @@
 ######################
 
 rule star_genome_build:
+    """
+    Build index files for Reference Genome
+    """
     input:
         ref = config["ref"]
     output:
@@ -20,6 +23,9 @@ rule star_genome_build:
         """
 
 rule star_align_reads:
+    """
+    Align RNA-seq reads to reference genome
+    """
     input:
         star_build = rules.star_genome_build.output,
         R1 = lambda w: glob.glob(f"{config['raw_reads']}/*.{w.sample}_R1.fastq.gz"),
@@ -52,6 +58,9 @@ rule star_align_reads:
 #####################
 
 rule generate_saf_file:
+    """
+    Conver GFF3 file to SAF file for feature counting
+    """
     input:
         gff = config["gff"]
     output:
@@ -74,6 +83,9 @@ rule generate_saf_file:
                             fout.write(f"{id}\t{chr}\t{start}\t{end}\t{strand}\n")
 
 rule feature_counts:
+    """
+    Count number of reads overlapping genes
+    """
     input:
         bams = expand(rules.star_align_reads.output.bam, sample=SAMPLES),
         saf = rules.generate_saf_file.output
@@ -95,6 +107,9 @@ rule feature_counts:
         """
         
 rule deg_analysis:
+    """
+    Perform differential expression analysis of normalized counts using DESeq2
+    """
     input:
         counts = rules.feature_counts.output,
         gff = config["gff"]
