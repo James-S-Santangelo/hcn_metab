@@ -99,6 +99,7 @@ rule deg_analysis:
         counts = rules.feature_counts.output,
         gff = config["gff"]
     output:
+        counts_df = f"{FIGURES_DIR}/normalized_counts.csv",
         li_plot = f"{FIGURES_DIR}/li_counts.pdf",
         cyp79_plot = f"{FIGURES_DIR}/CYP79D15_counts.pdf",
         cyp73_plot = f"{FIGURES_DIR}/CYP736A187_counts.pdf",
